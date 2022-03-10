@@ -1,5 +1,5 @@
 {
-    "name": "pestphp/pest-plugin-gwt",
+    "name": "milroyfraser/pest-plugin-gwt",
     "description": "Given When Then(GWT) Plugin for Pest",
     "keywords": [
         "php",

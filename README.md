@@ -1,4 +1,16 @@
-This repository contains the Pest Plugin Template.
+# Given When Then (GWT) Plugin for Pest
+
+> A simple API allows you to structure your tests focused on the behaviour. Given-When-Then separation makes the test easier to understand at a glance.
+
+<p align="center">
+    <img src="https://milroy-me.s3.eu-west-2.amazonaws.com/public/wink/images/scenario.png" width="800" alt="GWT PEST">
+</p>
+
+**Given** a state or situation (which you set up in the test)
+
+**When** I do something or an event happens n
+
+**Then** I expect an outcome (assert) or interaction between collaborators (mock verify)
 
 > If you want to start testing your application with Pest, visit the main **[Pest Repository](https://github.com/pestphp/pest)**.
 
