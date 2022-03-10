@@ -2,17 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Pest\PluginName;
-
-use Pest\Plugin;
-use PHPUnit\Framework\TestCase;
-
-Plugin::uses(Example::class);
+namespace Pest\Gwt;
 
 /**
- * @return TestCase
+ * @return BehaviorDescriptor
  */
-function example(string $argument)
+function scenario(string $description)
 {
-    return test()->example(...func_get_args());
+    return new BehaviorDescriptor($description);
 }

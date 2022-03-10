@@ -1,6 +1,6 @@
 {
-    "name": "pestphp/pest-plugin-template",
-    "description": "My awesome plugin",
+    "name": "pestphp/pest-plugin-gwt",
+    "description": "Given When Then(GWT) Plugin for Pest",
     "keywords": [
         "php",
         "framework",
@@ -8,7 +8,9 @@
         "unit",
         "test",
         "testing",
-        "plugin"
+        "plugin",
+        "AAA",
+        "GWT"
     ],
     "license": "MIT",
     "require": {
@@ -18,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Pest\\PluginName\\": "src/"
+            "Pest\\Gwt\\": "src/"
         },
         "files": [
             "src/Autoload.php"
@@ -41,7 +43,7 @@
     "scripts": {
         "lint": "php-cs-fixer fix -v",
         "test:lint": "php-cs-fixer fix -v --dry-run",
-        "test:types": "phpstan analyse --ansi",
+        "test:types": "phpstan analyse --ansi --debug",
         "test:unit": "pest --colors=always",
         "test": [
             "@test:lint",

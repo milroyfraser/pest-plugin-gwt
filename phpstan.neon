@@ -11,3 +11,6 @@ parameters:
     checkMissingIterableValueType: true
     checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: true
+
+    ignoreErrors:
+        - "# with null as default value#"
