@@ -2,15 +2,43 @@
 
 > A simple API allows you to structure your tests focused on the behaviour. Given-When-Then separation makes the test easier to understand at a glance.
 
-<p align="center">
-    <img src="https://milroy-me.s3.eu-west-2.amazonaws.com/public/wink/images/scenario.png" width="800" alt="GWT PEST">
-</p>
+### Install
+```shell
+composer require milroyfraser/pest-plugin-gwt --dev
+```
 
-**Given** a state or situation (which you set up in the test)
+### Usage
+```php
+use App\Exceptions\BlockedUserException;
+use App\Models\User;
+use function Pest\Gwt\scenario;
+use function Pest\Laravel\assertDatabaseHas;
 
-**When** I do something or an event happens n
+scenario('activate user')
+    ->given(fn() => User::factory()->create())
+    ->when(fn(User $user) => $user->activate())
+    ->then(fn(User $user) => assertDatabaseHas('users', [
+        'id' => $user->id,
+        'activated' => true,
+    ]));
 
-**Then** I expect an outcome (assert) or interaction between collaborators (mock verify)
+scenario('activate blocked user')
+    ->given(fn() => User::factory()->blocked()->create())
+    ->when(fn(User $user) => $user->activate())
+    ->throws(BlockedUserException::class);
+```
+
+**Given** a state
+
+Given method accepts a `Closure`. This is where we `Arrange` application state. The return values will become argument/s of the `when` closure.
+
+**When** I do something
+
+When method accepts a `Closure`. This is where we `Act` (perform) the operation. The return values will become argument/s of the `then` closure.
+
+**Then** I expect an outcome
+
+Then method accepts a `Closure`. This is where we `Assert` the outcome.
 
 > If you want to start testing your application with Pest, visit the main **[Pest Repository](https://github.com/pestphp/pest)**.
 
