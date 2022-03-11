@@ -28,6 +28,9 @@ scenario('activate blocked user')
     ->throws(BlockedUserException::class);
 ```
 
+[more examples](https://github.com/milroyfraser/pest-plugin-gwt/blob/master/tests/Example.php)
+
+
 **Given** a state
 
 Given method accepts a `Closure`. This is where we `Arrange` application state. The return values will become argument/s of the `when` closure.
