@@ -49,3 +49,18 @@ scenario('expecting exception without message')
         throw new Exception('Woops!');
     })
     ->throws(Exception::class);
+
+scenario('not returning an array works')
+    ->given(fn () => 'this is not an array')
+    ->when(fn (string $s) => $s)
+    ->then(fn (string $s) => expect($s)->toBe('this is not an array'));
+
+
+scenario('returning an arrayable class works')
+    ->given(function () {
+        return new class {
+            public $a;
+        };
+    })
+    ->when(fn ($c) => $c)
+->then(fn ($c) => expect((array)$c)->toBe(['a' => null]));
