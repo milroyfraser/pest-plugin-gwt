@@ -73,7 +73,6 @@ final class BehaviorDescriptor
 
             $params = $acting(...$params);
 
-            $params = $params;
             if (!is_array($params)) {
                 $params = [$params];
             }
