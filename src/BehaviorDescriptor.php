@@ -65,12 +65,18 @@ final class BehaviorDescriptor
             $params = [];
 
             if (!is_null($arranging)) {
-                $params = (array) $arranging();
+                $params = $arranging();
+                if (!is_array($params)) {
+                    $params = [$params];
+                }
             }
 
             $params = $acting(...$params);
 
-            $params = (array) $params;
+            $params = $params;
+            if (!is_array($params)) {
+                $params = [$params];
+            }
 
             $asserting(...$params);
         });
