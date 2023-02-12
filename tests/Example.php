@@ -4,9 +4,13 @@ use function Pest\Gwt\scenario;
 use function PHPUnit\Framework\assertEquals;
 
 scenario('given and when returning nothing')
-    ->given(function () {})
-    ->when(function () {})
-    ->then(function () { assertEquals(1, 1); });
+    ->given(function () {
+    })
+    ->when(function () {
+    })
+    ->then(function () {
+        assertEquals(1, 1);
+    });
 
 scenario('given and when returning non array values')
     ->given(function () {
@@ -51,15 +55,26 @@ scenario('expecting exception without message')
     ->throws(Exception::class);
 
 scenario('not returning an array works')
-    ->given(function () { return 'this is not an array'; })
-    ->when(function (string $s) { return $s; })
-    ->then(function (string $s) { expect($s)->toBe('this is not an array'); });
+    ->given(function () {
+        return 'this is not an array';
+    })
+    ->when(function (string $s) {
+        return $s;
+    })
+    ->then(function (string $s) {
+        expect($s)->toBe('this is not an array');
+    });
 
 scenario('returning an arrayable class works')
     ->given(function () {
-        return new class() {
+        return new class()
+        {
             public $a;
         };
     })
-    ->when(function ($c) { return $c; })
-    ->then(function ($c) { expect((array) $c)->toBe(['a' => null]); });
+    ->when(function ($c) {
+        return $c;
+    })
+    ->then(function ($c) {
+        expect((array) $c)->toBe(['a' => null]);
+    });
