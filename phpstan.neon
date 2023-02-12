@@ -13,4 +13,4 @@ parameters:
     reportUnmatchedIgnoredErrors: true
 
     ignoreErrors:
-        - "# with null as default value#"
+            - "#has parameter \\$exceptionMessage with null as default value.#"

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Pest\Gwt;
 
 use Closure;
-use Pest\PendingObjects\TestCall;
+use Pest\PendingCalls\TestCall;
 use Pest\Support\Backtrace;
 use Pest\TestSuite;
 
@@ -57,23 +57,23 @@ final class BehaviorDescriptor
     public function then(Closure $asserting)
     {
         $arranging = $this->arranging;
-        $acting    = $this->acting;
+        $acting = $this->acting;
 
         $filename = Backtrace::testFile();
 
         return new TestCall(TestSuite::getInstance(), $filename, $this->description, function () use ($arranging, $acting, $asserting) {
             $params = [];
 
-            if (!is_null($arranging)) {
+            if (! is_null($arranging)) {
                 $params = $arranging();
-                if (!is_array($params)) {
+                if (! is_array($params)) {
                     $params = [$params];
                 }
             }
 
             $params = $acting(...$params);
 
-            if (!is_array($params)) {
+            if (! is_array($params)) {
                 $params = [$params];
             }
 
@@ -86,6 +86,7 @@ final class BehaviorDescriptor
      */
     public function throws(string $exception, string $exceptionMessage = null)
     {
-        return $this->then(function () {})->throws($exception, $exceptionMessage);
+        return $this->then(function () {
+        })->throws($exception, $exceptionMessage);
     }
 }
