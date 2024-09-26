@@ -9,8 +9,8 @@ parameters:
         - src
 
     checkMissingIterableValueType: true
-    checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: true
 
     ignoreErrors:
-            - "#has parameter \\$exceptionMessage with null as default value.#"
+        - "#with a nullable type declaration#"
+        - "# with null as default value#"

@@ -11,57 +11,34 @@ use Pest\TestSuite;
 
 final class BehaviorDescriptor
 {
-    /**
-     * @var Closure|null
-     */
-    private $arranging = null;
+    private ?Closure $arranging = null;
 
-    /**
-     * @var Closure
-     */
-    private $acting;
+    private Closure $acting;
 
-    /**
-     * @var string
-     */
-    private $description;
+    public function __construct(private readonly string $description) {}
 
-    public function __construct(string $description)
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @return BehaviorDescriptor
-     */
-    public function given(Closure $arrange)
+    public function given(Closure $arrange): BehaviorDescriptor
     {
         $this->arranging = $arrange;
 
         return $this;
     }
 
-    /**
-     * @return self
-     */
-    public function when(Closure $act)
+    public function when(Closure $act): self
     {
         $this->acting = $act;
 
         return $this;
     }
 
-    /**
-     * @return TestCall
-     */
-    public function then(Closure $asserting)
+    public function then(Closure $asserting): TestCall
     {
         $arranging = $this->arranging;
         $acting = $this->acting;
 
         $filename = Backtrace::testFile();
 
-        return new TestCall(TestSuite::getInstance(), $filename, $this->description, function () use ($arranging, $acting, $asserting) {
+        return new TestCall(TestSuite::getInstance(), $filename, $this->description, function () use ($arranging, $acting, $asserting): void {
             $params = [];
 
             if (! is_null($arranging)) {
@@ -81,12 +58,8 @@ final class BehaviorDescriptor
         });
     }
 
-    /**
-     * @return TestCall
-     */
-    public function throws(string $exception, string $exceptionMessage = null)
+    public function throws(string|int $exception, ?string $exceptionMessage = null): TestCall
     {
-        return $this->then(function () {
-        })->throws($exception, $exceptionMessage);
+        return $this->then(function (): void {})->throws($exception, $exceptionMessage);
     }
 }

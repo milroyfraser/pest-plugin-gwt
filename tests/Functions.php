@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use function Pest\Gwt\scenario;
 use function PHPUnit\Framework\assertEquals;
 

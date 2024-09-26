@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 use function Pest\Gwt\scenario;
 use function PHPUnit\Framework\assertEquals;
 
 scenario('given and when returning nothing')
-    ->given(function () {
-    })
-    ->when(function () {
-    })
+    ->given(function () {})
+    ->when(function () {})
     ->then(function () {
         assertEquals(1, 1);
     });
@@ -67,7 +67,7 @@ scenario('not returning an array works')
 
 scenario('returning an arrayable class works')
     ->given(function () {
-        return new class()
+        return new class
         {
             public $a;
         };
