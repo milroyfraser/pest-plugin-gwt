@@ -27,6 +27,7 @@
         ]
     },
     "require-dev": {
+        "ergebnis/phpstan-rules": "^2.5",
         "pestphp/pest-dev-tools": "^3.0.0"
     },
     "minimum-stability": "dev",
